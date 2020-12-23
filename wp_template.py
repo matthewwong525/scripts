@@ -15,28 +15,27 @@ mon = today + dt.timedelta(days=-today.weekday(), weeks=1)
 week_list = []
 for i in range(7):
     week_list.append(custom_strftime('%B {S}, %Y', mon + dt.timedelta(days=i)))
-    week_list.append(custom_strftime('%B {S}, %Y', mon + dt.timedelta(days=i)))
 
-week_list.insert(0, custom_strftime('%B {S}, %Y', mon + dt.timedelta(days=7)))
-
+mon, tues, wed, thurs, fri, sat, sun = week_list
 query = """- ## Top Weekly Goals
     - Misc
-        - {{{{[[TODO]]}}}} Create [[Weekly Plan: {}]]
+        - {{{{[[TODO]]}}}} Create [[Weekly Plan: {mon}]]
+        - {{{{[[TODO]]}}}} Clear 5 items from my inbox
 - ## Daily Goals
-    - Monday [[{}]]
-        - {{{{[[query]]: {{and: {{or: [[TODO]] [[DONE]]}} [[{}]]{{not: [[query]]}}}} }}}}
-    - Tuesday [[{}]]
-        - {{{{[[query]]: {{and: {{or: [[TODO]] [[DONE]]}} [[{}]]{{not: [[query]]}}}} }}}}
-    - Wednesday [[{}]]
-        - {{{{[[query]]: {{and: {{or: [[TODO]] [[DONE]]}} [[{}]]{{not: [[query]]}}}} }}}}
-    - Thursday [[{}]]
-        - {{{{[[query]]: {{and: {{or: [[TODO]] [[DONE]]}} [[{}]]{{not: [[query]]}}}} }}}}
-    - Friday [[{}]]
-        - {{{{[[query]]: {{and: {{or: [[TODO]] [[DONE]]}} [[{}]]{{not: [[query]]}}}} }}}}
-    - Saturday [[{}]]
-        - {{{{[[query]]: {{and: {{or: [[TODO]] [[DONE]]}} [[{}]]{{not: [[query]]}}}} }}}}
-    - Sunday [[{}]
-        - {{{{[[query]]: {{and: {{or: [[TODO]] [[DONE]]}} [[{}]]{{not: [[query]]}}}} }}}}
-- Tags:: #[[Weekly Plan]]""".format(*week_list)
+    - Monday [[{mon}]]
+        - {{{{[[query]]: {{and: {{or: [[TODO]] [[DONE]]}} [[{mon}]]{{not: [[query]]}}}} }}}}
+    - Tuesday [[{tues}]]
+        - {{{{[[query]]: {{and: {{or: [[TODO]] [[DONE]]}} [[{tues}]]{{not: [[query]]}}}} }}}}
+    - Wednesday [[{wed}]]
+        - {{{{[[query]]: {{and: {{or: [[TODO]] [[DONE]]}} [[{wed}]]{{not: [[query]]}}}} }}}}
+    - Thursday [[{thurs}]]
+        - {{{{[[query]]: {{and: {{or: [[TODO]] [[DONE]]}} [[{thurs}]]{{not: [[query]]}}}} }}}}
+    - Friday [[{fri}]]
+        - {{{{[[query]]: {{and: {{or: [[TODO]] [[DONE]]}} [[{fri}]]{{not: [[query]]}}}} }}}}
+    - Saturday [[{sat}]]
+        - {{{{[[query]]: {{and: {{or: [[TODO]] [[DONE]]}} [[{sat}]]{{not: [[query]]}}}} }}}}
+    - Sunday [[{sun}]
+        - {{{{[[query]]: {{and: {{or: [[TODO]] [[DONE]]}} [[{sun}]]{{not: [[query]]}}}} }}}}
+- Tags:: #[[Weekly Plan]]""".format(mon=mon, tues=tues, wed=wed, thurs=thurs, fri=fri, sat=sat, sun=sun)
 
 print(query)

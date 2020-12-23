@@ -14,18 +14,11 @@ today = dt.date.today()
 mon = today + dt.timedelta(days=-today.weekday(), weeks=1)
 mon_list = [custom_strftime('%B {S}, %Y', mon)] * 6
 
-query = """- [[school]]
-    - [[SYDE543]]
-        - {{{{[[query]]: {{and: {{or: [[TODO]] [[DONE]]}} [[SYDE543]] [[Weekly Plan: {}]]{{not: [[query]]}}}} }}}}
-    - [[ECE484]]
-        - {{{{[[query]]: {{and: {{or: [[TODO]] [[DONE]]}} [[ECE484]] [[Weekly Plan: {}]]{{not: [[query]]}}}} }}}}
-    - [[KIN255]]
-        - {{{{[[query]]: {{and: {{or: [[TODO]] [[DONE]]}} [[KIN255]] [[Weekly Plan: {}]]{{not: [[query]]}}}} }}}}
-    - [[ECE457A]]
-        - {{{{[[query]]: {{and: {{or: [[TODO]] [[DONE]]}} [[ECE457A]] [[Weekly Plan: {}]]{{not: [[query]]}}}} }}}}
-    - [[PHIL226]]
-        - {{{{[[query]]: {{and: {{or: [[TODO]] [[DONE]]}} [[PHIL226]] [[Weekly Plan: {}]]{{not: [[query]]}}}} }}}}
-    - [[MTE481]]
-        - {{{{[[query]]: {{and: {{or: [[TODO]] [[DONE]]}} [[MTE481]] [[Weekly Plan: {}]]{{not: [[query]]}}}} }}}}""".format(*mon_list)
+classes_a = ['SYDE543', 'ECE484', 'KIN255', 'ECE457A', 'PHIL226', 'MTE481']
+
+query = "- [[school]]"
+
+for c in classes_a:
+    query1 += "\n    - [[{c}]]\n        - {{{{[[query]]: {{and: {{or: [[TODO]] [[DONE]]}} [[{c}]] [[Weekly Plan: {d}]]{{not: [[query]]}}}} }}}}".format(c = c, d = custom_strftime('%B {S}, %Y', mon))
 
 print(query)
