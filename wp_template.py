@@ -34,7 +34,7 @@ query = """- ## Top Weekly Goals
         - {{{{[[query]]: {{and: {{or: [[TODO]] [[DONE]]}} [[{fri}]]{{not: [[query]]}}}} }}}}
     - Saturday [[{sat}]]
         - {{{{[[query]]: {{and: {{or: [[TODO]] [[DONE]]}} [[{sat}]]{{not: [[query]]}}}} }}}}
-    - Sunday [[{sun}]
+    - Sunday [[{sun}]]
         - {{{{[[query]]: {{and: {{or: [[TODO]] [[DONE]]}} [[{sun}]]{{not: [[query]]}}}} }}}}
 - Tags:: #[[Weekly Plan]]""".format(mon=mon, tues=tues, wed=wed, thurs=thurs, fri=fri, sat=sat, sun=sun)
 
