@@ -13,13 +13,13 @@ def custom_strftime(format, t):
 today = dt.date.today()
 mon = today + dt.timedelta(days=-today.weekday(), weeks=1)
 week_list = []
-for i in range(7):
+for i in range(8):
     week_list.append(custom_strftime('%B {S}, %Y', mon + dt.timedelta(days=i)))
 
-mon, tues, wed, thurs, fri, sat, sun = week_list
+mon, tues, wed, thurs, fri, sat, sun, next_mon = week_list
 query = """- ## Top Weekly Goals
     - Misc
-        - {{{{[[TODO]]}}}} Create [[Weekly Plan: {mon}]]
+        - {{{{[[TODO]]}}}} Create [[Weekly Plan: {next_mon}]]
         - {{{{[[TODO]]}}}} Clear 5 items from my inbox
 - ## Daily Goals
     - Monday [[{mon}]]
@@ -36,6 +36,6 @@ query = """- ## Top Weekly Goals
         - {{{{[[query]]: {{and: {{or: [[TODO]] [[DONE]]}} [[{sat}]]{{not: [[query]]}}}} }}}}
     - Sunday [[{sun}]]
         - {{{{[[query]]: {{and: {{or: [[TODO]] [[DONE]]}} [[{sun}]]{{not: [[query]]}}}} }}}}
-- Tags:: #[[Weekly Plan]]""".format(mon=mon, tues=tues, wed=wed, thurs=thurs, fri=fri, sat=sat, sun=sun)
+- Tags:: #[[Weekly Plan]]""".format(mon=mon, tues=tues, wed=wed, thurs=thurs, fri=fri, sat=sat, sun=sun, next_mon=next_mon)
 
 print(query)
