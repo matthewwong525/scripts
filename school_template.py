@@ -15,10 +15,11 @@ mon = today + dt.timedelta(days=-today.weekday(), weeks=1)
 mon_list = [custom_strftime('%B {S}, %Y', mon)] * 6
 
 classes_a = ['SYDE543', 'ECE484', 'KIN255', 'ECE457A', 'PHIL226', 'MTE481']
+classes_b = ['SYDE544', 'ENGL335', 'MTE546', 'ME598', 'FYDP']
 
 query = "- [[school]]"
 
-for c in classes_a:
-    query1 += "\n    - [[{c}]]\n        - {{{{[[query]]: {{and: {{or: [[TODO]] [[DONE]]}} [[{c}]] [[Weekly Plan: {d}]]{{not: [[query]]}}}} }}}}".format(c = c, d = custom_strftime('%B {S}, %Y', mon))
+for c in classes_b:
+    query += "\n    - [[{c}]]\n        - {{{{[[query]]: {{and: {{or: [[TODO]] [[DONE]]}} [[{c}]] [[Weekly Plan: {d}]]{{not: [[query]]}}}} }}}}".format(c = c, d = custom_strftime('%B {S}, %Y', mon))
 
 print(query)
